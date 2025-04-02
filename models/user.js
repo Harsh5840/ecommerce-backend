@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema(
       default: false,
     },
   },
-  { timestamps: true }
+  { timestamps: true }  //creates createdAt kind of schemas
 );
 
 module.exports = mongoose.model("User", UserSchema);
