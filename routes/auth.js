@@ -23,7 +23,6 @@ router.post("/register", async (req, res) => {
 });
 
 //LOGIN
-
 router.post('/login', async (req, res) => {
     try{
         const user = await User.findOne(
@@ -50,13 +49,13 @@ router.post('/login', async (req, res) => {
         const accessToken = jwt.sign(
         {
             id: user._id,
-            isAdmin: user.isAdmin,
+            isAdmin: user.isAdmin,    //we included isAdmin in the token because we want to check if the user is admin or not
         },
         process.env.JWT_SEC,
             {expiresIn:"3d"}
         );
   
-        const { password, ...others } = user._doc;  
+        const { password, ...others } = user._doc;  //this is used to remove the password from the response and the ._doc is used to remove the __v field from the response
         res.status(200).json({...others, accessToken});
 
     }catch(err){
