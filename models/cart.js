@@ -15,7 +15,7 @@ const CartSchema = new mongoose.Schema(
       },
     ],
   },
-  { timestamps: true }
+  { timestamps: true } // timestamps: true is used to add createdAt and updatedAt fields to the schema
 );
 
 module.exports = mongoose.model("Cart", CartSchema);
